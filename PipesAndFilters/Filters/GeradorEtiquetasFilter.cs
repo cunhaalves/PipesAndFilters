@@ -9,9 +9,18 @@ namespace PipesAndFilters.Filters
 {
     public class GeradorEtiquetasFilter : BaseFilter<Polo>
     {
-        public override Polo Execute(Polo input)
+        public override Polo Execute(Polo polo)
         {
-            throw new NotImplementedException();
+            foreach (var escola in polo.Escolas)
+            {
+                foreach (var turma in escola.Turmas)
+                {
+                    turma.Pacotes.Add(new Pacote { Id = Guid.NewGuid(), SequencialNaTurma = 1 });
+                    turma.Pacotes.Add(new Pacote { Id = Guid.NewGuid(), SequencialNaTurma = 2 });
+                }
+            }
+
+            return polo;
         }
     }
 }

@@ -12,5 +12,7 @@ namespace PipesAndFilters.Domain
         public string Nome { get; set; }
         
         public List<Escola> Escolas { get; set; }
+
+        public List<Cdl> Cdls = new List<Cdl>();
     }
 }

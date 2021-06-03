@@ -13,6 +13,8 @@ namespace PipesAndFilters.Domain
             get; set;
         }
 
-        public List<Aluno> Alunos { get; set; }
+        public int SequencialNaTurma { get; set; }
+
+        public Malote Malote { get; set; }
     }
 }

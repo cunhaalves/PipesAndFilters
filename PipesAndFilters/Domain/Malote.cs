@@ -13,6 +13,10 @@ namespace PipesAndFilters.Domain
             get; set;
         }
 
-        public List<Pacote> Pacotes { get; set; }
+        public Escola Escola { get; set; }
+
+        public int SequencialNaEscola { get; set; }
+
+        public Cdl Cdl { get; set; }
     }
 }

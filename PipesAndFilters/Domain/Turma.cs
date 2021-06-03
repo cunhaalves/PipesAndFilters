@@ -17,6 +17,6 @@ namespace PipesAndFilters.Domain
             get; set;
         }
 
-        public List<Aluno> Alunos { get; set; }
+        public List<Pacote> Pacotes = new List<Pacote>();
     }
 }

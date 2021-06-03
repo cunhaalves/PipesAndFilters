@@ -19,6 +19,6 @@ namespace PipesAndFilters.Pipeline
             return this;
         }
 
-        public abstract void Process(IEnumerable<T> input);
+        public abstract T Process(T input);
     }
 }

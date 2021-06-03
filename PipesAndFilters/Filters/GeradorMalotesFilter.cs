@@ -9,9 +9,23 @@ namespace PipesAndFilters.Filters
 {
     public class GeradorMalotesFilter : BaseFilter<Polo>
     {
-        public override Polo Execute(Polo input)
+        public override Polo Execute(Polo polo)
         {
-            throw new NotImplementedException();
+            foreach (var escola in polo.Escolas)
+            {
+                var malote = new Malote() { Id = Guid.NewGuid(), Escola = escola, SequencialNaEscola = 1 };
+                escola.Malotes.Add(malote);
+
+                foreach (var turma in escola.Turmas)
+                {
+                    foreach (var pacote in turma.Pacotes)
+                    {
+                        pacote.Malote = malote;
+                    }
+                }
+            }
+
+            return polo;
         }
     }
 }

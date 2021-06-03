@@ -9,9 +9,20 @@ namespace PipesAndFilters.Filters
 {
     class GeradorCDLFilter : BaseFilter<Polo>
     {
-        public override Polo Execute(Polo input)
+        public override Polo Execute(Polo polo)
         {
-            throw new NotImplementedException();
+            var cdl = new Cdl() { Id = Guid.NewGuid(), Polo = polo, SequencialNoPolo = 1 };
+            polo.Cdls.Add(cdl);
+
+            foreach (var escola in polo.Escolas)
+            {
+                foreach (var malote in escola.Malotes)
+                {
+                    malote.Cdl = cdl;
+                }
+            }
+
+            return polo;
         }
     }
 }
