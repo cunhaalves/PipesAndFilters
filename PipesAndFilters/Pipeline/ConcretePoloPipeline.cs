@@ -14,6 +14,9 @@ namespace PipesAndFilters.Pipeline
     {
         public override Polo Process(Polo polo)
         {
+            Random r = new Random();
+            Thread.Sleep(r.Next(100, 500));
+
             foreach (var filter in filters)
                 polo = filter.Execute(polo);
 

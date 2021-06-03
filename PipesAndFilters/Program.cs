@@ -23,8 +23,8 @@ namespace PipesAndFilters
 
             foreach (var polo in polos)
             {
-                pipeline.Process(polo);
-                Imprimir(polo);
+                Task<Polo> task = Task.Run(() => pipeline.Process(polo));
+                Imprimir(task.Result);
             }
 
             Console.ReadKey();
@@ -32,6 +32,9 @@ namespace PipesAndFilters
 
         static void Imprimir(Polo polo)
         {
+            Console.WriteLine(string.Format("Polo Id: {0} |  Polo: {1}", polo.Id, polo.Nome));
+
+            /*
             Console.WriteLine();
             Console.WriteLine("*** POLO ***");
             Console.WriteLine();
@@ -49,12 +52,12 @@ namespace PipesAndFilters
             Console.WriteLine();
             foreach (var escola in polo.Escolas)
             {
-                
+
                 Console.WriteLine(string.Format("   Escola Id: {0} |  Escola: {1}", escola.Id, escola.Nome));
                 Console.WriteLine();
                 Console.WriteLine("     *** MALOTES DA ESCOLA ***");
                 Console.WriteLine();
-               
+
                 foreach (var malote in escola.Malotes)
                 {
                     Console.WriteLine(string.Format("       Malote Id: {0} |  Sequencial na Escola: {1} | Cdl: {2}", malote.Id, malote.SequencialNaEscola, malote.Cdl.Id));
@@ -78,6 +81,8 @@ namespace PipesAndFilters
                     }
                 }
             }
+            */
+  
         }
     }
 }
